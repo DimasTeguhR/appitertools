@@ -2,16 +2,67 @@
 import streamlit as st
 
 #Title
+
 st.title("Tugas Project Pemrograman Fungsional Kelompok 6")
+st.header("Studi kasus : Web Pembelajaran Itertools")
 st.markdown("""Anggota :""")
 st.markdown(":blue[Latifah Nurrohmah       (21102124)]:girl:")
 st.markdown(":blue[Kelvin Fauzian Setiawan (21102127)]:boy:")
 st.markdown(":blue[Dimas Teguh Ramadhani   (21102145)]:boy:") 
 st.markdown(":blue[Septya Andini Putri     (21102177)]:girl:")
 st.header("Itertools")
+
 st.text("""Modul itertools adalah library standar yang mengandung beberapa fungsi
 yang berguna dalam pemrograman fungsional. fungsinya untuk membantu bekerja 
 dengan iterables berulang. """)
+
+## Project studi kasus menggunakan itertools permutasi, kombinasi, dan count:
+st.header("Project Utama")
+st.subheader("Project studi kasus menggunakan itertools - permutation() - combination() - groupby()")
+
+#code block
+code ='''import itertools
+
+# Studi kasus: Menentukan jumlah tiket yang diperlukan untuk mengambil semua hadiah dalam permainan
+prizes = ['Laptop', 'Smartphone', 'Tablet', 'Bluetooth Speaker']
+ticket_prices = [50000, 40000, 35000, 30000]
+budget = 150000
+
+# Mencari jumlah tiket minimum yang diperlukan untuk membeli semua hadiah
+for n in itertools.count(1):
+    for combo in itertools.combinations(ticket_prices, n):
+        if sum(combo) == budget:
+            print(f"Jumlah tiket minimum yang diperlukan: {n}")
+            break
+    else:
+        continue
+    break
+
+# Mencari semua kombinasi tiket yang dapat dibeli dengan budget tertentu
+for combo in itertools.combinations(ticket_prices, n):
+    if sum(combo) == budget:
+        print(f"Kombinasi tiket yang dapat dibeli: {combo}")
+
+# Mencari semua permutasi hadiah yang bisa dibeli dengan budget tertentu
+for combo in itertools.combinations(ticket_prices, n):
+    if sum(combo) == budget:
+        for perm in itertools.permutations(prizes, n):
+            print(f"Permutasi hadiah yang bisa dibeli: {perm}")'''
+st.code(code, language='python')
+
+st.text("Maka output yang akan dihasilkan menjadi")
+code ='''Jumlah tiket minimum yang diperlukan: 3
+Kombinasi tiket yang dapat dibeli: (40000, 50000, 50000)
+Permutasi hadiah yang bisa dibeli: ('Smartphone', 'Laptop', 'Bluetooth Speaker')
+Permutasi hadiah yang bisa dibeli: ('Smartphone', 'Bluetooth Speaker', 'Laptop')
+Permutasi hadiah yang bisa dibeli: ('Bluetooth Speaker', 'Smartphone', 'Laptop')
+Permutasi hadiah yang bisa dibeli: ('Bluetooth Speaker', 'Laptop', 'Smartphone')
+Permutasi hadiah yang bisa dibeli: ('Laptop', 'Bluetooth Speaker', 'Smartphone')
+Permutasi hadiah yang bisa dibeli: ('Laptop', 'Smartphone', 'Bluetooth Speaker')'''
+st.code(code, language='python')
+
+st.markdown("Program ini menentukan jumlah tiket minimum yang diperlukan untuk membeli semua hadiah dalam permainan. Dalam hal ini, terdapat 4 jenis hadiah (Laptop, Smartphone, Tablet, dan Bluetooth Speaker) dengan harga tiket masing-masing (50000, 40000, 35000, 30000). Budget yang tersedia adalah 150000. Menggunakan fungsi _:green[itertools.count()]_, program ini mencari jumlah tiket minimum yang diperlukan untuk membeli semua hadiah. Kemudian, menggunakan fungsi _:green[itertools.combinations()]_, program mencari semua kombinasi tiket yang dapat dibeli dengan budget yang tersedia. Terakhir, menggunakan _:green[itertools.permutations()]_, program mencari semua permutasi hadiah yang bisa dibeli dengan budget tertentu.")
+
 st.text("""Itertools terbagi menjadi 2 yaitu
 - Using infinite iterators yang meliputi
   - count()
@@ -25,7 +76,8 @@ st.text("""Itertools terbagi menjadi 2 yaitu
   - permutations()
   - groupby()""")
 
-st.header("Dibawah ini adalah contoh beberapa studi kasus yang menggunakan fungsi fungsi dari itertools")
+st.header("Pembahasan dan Implementasi Program dari setiap materi")
+st.subheader("Dibawah ini adalah contoh beberapa studi kasus yang menggunakan fungsi fungsi dari itertools")
 
 ## Count
 
@@ -304,49 +356,6 @@ st.code(code, language='python')
 
 st.markdown("Program ini adalah contoh studi kasus menghitung berapa banyak kemunculan tiap huruf dalam sebuah kalimat. dengan menggunakan sorted() untuk mengurutkan huruf dalam kalimat dan :green[_itertools.groupby()_] untuk mengelompokkan huruf yang sama pada studi kasus diatas.")
 
-## Project studi kasus menggunakan itertools permutasi, kombinasi, dan count:
-
-st.subheader("Project studi kasus menggunakan itertools - permutation() - combination() - groupby()")
-
-#code block
-code ='''import itertools
-
-# Studi kasus: Menentukan jumlah tiket yang diperlukan untuk mengambil semua hadiah dalam permainan
-prizes = ['Laptop', 'Smartphone', 'Tablet', 'Bluetooth Speaker']
-ticket_prices = [50000, 40000, 35000, 30000]
-budget = 150000
-
-# Mencari jumlah tiket minimum yang diperlukan untuk membeli semua hadiah
-for n in itertools.count(1):
-    for combo in itertools.combinations(ticket_prices, n):
-        if sum(combo) == budget:
-            print(f"Jumlah tiket minimum yang diperlukan: {n}")
-            break
-    else:
-        continue
-    break
-
-# Mencari semua kombinasi tiket yang dapat dibeli dengan budget tertentu
-for combo in itertools.combinations(ticket_prices, n):
-    if sum(combo) == budget:
-        print(f"Kombinasi tiket yang dapat dibeli: {combo}")
-
-# Mencari semua permutasi hadiah yang bisa dibeli dengan budget tertentu
-for combo in itertools.combinations(ticket_prices, n):
-    if sum(combo) == budget:
-        for perm in itertools.permutations(prizes, n):
-            print(f"Permutasi hadiah yang bisa dibeli: {perm}")'''
-st.code(code, language='python')
-
-st.text("Maka output yang akan dihasilkan menjadi")
-code ='''Jumlah tiket minimum yang diperlukan: 3
-Kombinasi tiket yang dapat dibeli: (40000, 50000, 50000)
-Permutasi hadiah yang bisa dibeli: ('Smartphone', 'Laptop', 'Bluetooth Speaker')
-Permutasi hadiah yang bisa dibeli: ('Smartphone', 'Bluetooth Speaker', 'Laptop')
-Permutasi hadiah yang bisa dibeli: ('Bluetooth Speaker', 'Smartphone', 'Laptop')
-Permutasi hadiah yang bisa dibeli: ('Bluetooth Speaker', 'Laptop', 'Smartphone')
-Permutasi hadiah yang bisa dibeli: ('Laptop', 'Bluetooth Speaker', 'Smartphone')
-Permutasi hadiah yang bisa dibeli: ('Laptop', 'Smartphone', 'Bluetooth Speaker')'''
-st.code(code, language='python')
-
-st.markdown("Program ini menentukan jumlah tiket minimum yang diperlukan untuk membeli semua hadiah dalam permainan. Dalam hal ini, terdapat 4 jenis hadiah (Laptop, Smartphone, Tablet, dan Bluetooth Speaker) dengan harga tiket masing-masing (50000, 40000, 35000, 30000). Budget yang tersedia adalah 150000. Menggunakan fungsi _:green[itertools.count()]_, program ini mencari jumlah tiket minimum yang diperlukan untuk membeli semua hadiah. Kemudian, menggunakan fungsi _:green[itertools.combinations()]_, program mencari semua kombinasi tiket yang dapat dibeli dengan budget yang tersedia. Terakhir, menggunakan _:green[itertools.permutations()]_, program mencari semua permutasi hadiah yang bisa dibeli dengan budget tertentu.")
+st.header("Kesimpulan")
+st.markdown("Itertools adalah modul Python yang memberikan fungsi generator untuk melakukan operasi iterasi dengan efisiensi tinggi. Fungsinya meliputi: produksi iterasi, kompresi iterasi, pemeliharaan urutan, infinite iterasi, dan penggabungan iterasi. Memahami dan menggunakan fungsi dari itertools dapat membuat program Anda lebih efisien dan sederhana.")
+st.markdown("Dari implementasi program setiap materi diatas, diharapkan pembaca dapat mengetahui setiap fungsi dari Itertools.")
