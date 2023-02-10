@@ -2,7 +2,7 @@
 import streamlit as st
 
 #Title
-st.title("Tugas Project Pemrograman Fungsional")
+st.title("Tugas Project Pemrograman Fungsional Kelompok 6")
 st.markdown("""Anggota :""")
 st.markdown(":blue[Latifah Nurrohmah       (21102124)]:girl:")
 st.markdown(":blue[Kelvin Fauzian Setiawan (21102127)]:boy:")
