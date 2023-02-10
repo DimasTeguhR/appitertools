@@ -304,3 +304,49 @@ st.code(code, language='python')
 
 st.markdown("Program ini adalah contoh studi kasus menghitung berapa banyak kemunculan tiap huruf dalam sebuah kalimat. dengan menggunakan sorted() untuk mengurutkan huruf dalam kalimat dan :green[_itertools.groupby()_] untuk mengelompokkan huruf yang sama pada studi kasus diatas.")
 
+## Project studi kasus menggunakan itertools permutasi, kombinasi, dan count:
+
+st.subheader("Project studi kasus menggunakan itertools - permutation() - combination() - groupby()")
+
+#code block
+code ='''import itertools
+
+# Studi kasus: Menentukan jumlah tiket yang diperlukan untuk mengambil semua hadiah dalam permainan
+prizes = ['Laptop', 'Smartphone', 'Tablet', 'Bluetooth Speaker']
+ticket_prices = [50000, 40000, 35000, 30000]
+budget = 150000
+
+# Mencari jumlah tiket minimum yang diperlukan untuk membeli semua hadiah
+for n in itertools.count(1):
+    for combo in itertools.combinations(ticket_prices, n):
+        if sum(combo) == budget:
+            print(f"Jumlah tiket minimum yang diperlukan: {n}")
+            break
+    else:
+        continue
+    break
+
+# Mencari semua kombinasi tiket yang dapat dibeli dengan budget tertentu
+for combo in itertools.combinations(ticket_prices, n):
+    if sum(combo) == budget:
+        print(f"Kombinasi tiket yang dapat dibeli: {combo}")
+
+# Mencari semua permutasi hadiah yang bisa dibeli dengan budget tertentu
+for combo in itertools.combinations(ticket_prices, n):
+    if sum(combo) == budget:
+        for perm in itertools.permutations(prizes, n):
+            print(f"Permutasi hadiah yang bisa dibeli: {perm}")'''
+st.code(code, language='python')
+
+st.text("Maka output yang akan dihasilkan menjadi")
+code ='''Jumlah tiket minimum yang diperlukan: 3
+Kombinasi tiket yang dapat dibeli: (40000, 50000, 50000)
+Permutasi hadiah yang bisa dibeli: ('Smartphone', 'Laptop', 'Bluetooth Speaker')
+Permutasi hadiah yang bisa dibeli: ('Smartphone', 'Bluetooth Speaker', 'Laptop')
+Permutasi hadiah yang bisa dibeli: ('Bluetooth Speaker', 'Smartphone', 'Laptop')
+Permutasi hadiah yang bisa dibeli: ('Bluetooth Speaker', 'Laptop', 'Smartphone')
+Permutasi hadiah yang bisa dibeli: ('Laptop', 'Bluetooth Speaker', 'Smartphone')
+Permutasi hadiah yang bisa dibeli: ('Laptop', 'Smartphone', 'Bluetooth Speaker')'''
+st.code(code, language='python')
+
+st.markdown("Program ini menentukan jumlah tiket minimum yang diperlukan untuk membeli semua hadiah dalam permainan. Dalam hal ini, terdapat 4 jenis hadiah (Laptop, Smartphone, Tablet, dan Bluetooth Speaker) dengan harga tiket masing-masing (50000, 40000, 35000, 30000). Budget yang tersedia adalah 150000. Menggunakan fungsi _:green[itertools.count()]_, program ini mencari jumlah tiket minimum yang diperlukan untuk membeli semua hadiah. Kemudian, menggunakan fungsi _:green[itertools.combinations()]_, program mencari semua kombinasi tiket yang dapat dibeli dengan budget yang tersedia. Terakhir, menggunakan _:green[itertools.permutations()]_, program mencari semua permutasi hadiah yang bisa dibeli dengan budget tertentu.")
